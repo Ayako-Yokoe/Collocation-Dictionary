@@ -13,7 +13,7 @@ const wordlistSlice = createSlice({
             state.isFetching = true
             state.error = false
         },
-        getWordListSuccess: (state, action) => {
+        getWordlistSuccess: (state, action) => {
             state.isFetching = false
             state.wordlist = action.payload
         },
@@ -26,7 +26,7 @@ const wordlistSlice = createSlice({
             state.isFetching = true
             state.error = false
         },
-        deleteWordListSuccess: (state, action) => {
+        deleteWordlistSuccess: (state, action) => {
             state.isFetching = false
             state.wordlist.splice(state.wordlist.findIndex(word => word._id === action.payload), 1)
         },
@@ -39,7 +39,7 @@ const wordlistSlice = createSlice({
             state.isFetching = true
             state.error = false
         },
-        addWordListSuccess: (state, action) => {
+        addWordlistSuccess: (state, action) => {
             state.isFetching = false
             state.wordlist.push(action.payload)
         },
@@ -53,13 +53,13 @@ const wordlistSlice = createSlice({
 
 export const {
     getWordlistStart,
-    getWordListSuccess,
+    getWordlistSuccess,
     getWordlistFailure,
     deleteWordlistStart,
-    deleteWordListSuccess,
+    deleteWordlistSuccess,
     deleteWordlistFailure,
     addWordlistStart,
-    addWordListSuccess,
+    addWordlistSuccess,
     addWordlistFailure
 } = wordlistSlice.actions
 
