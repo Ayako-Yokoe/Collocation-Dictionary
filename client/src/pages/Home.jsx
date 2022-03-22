@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import styled from 'styled-components'
 import Box from '@mui/material/Box';
@@ -50,6 +51,7 @@ const Bottom = styled.div``
 const BottomButton = styled.div`
   /* margin: 3rem; */
   padding: 1rem;
+  margin: 0 auto;
   text-align: center;
   border: 1px solid gray;
   cursor: pointer;
@@ -64,10 +66,16 @@ const Home = () => {
     <Container>
       <Navbar />
       <Wrapper>
-        <TopButton>START</TopButton>
+        <Link to='/search'>
+          <TopButton>START</TopButton>
+        </Link>
         <Middle>
-          <MiddleButton>PRACTICE</MiddleButton>
-          <MiddleButton>QUIZ</MiddleButton>
+          <Link to='/practice'>
+            <MiddleButton>PRACTICE</MiddleButton>
+          </Link>
+          <Link to='/quiz'>
+            <MiddleButton>QUIZ</MiddleButton>
+          </Link>
         </Middle>
         <Bottom>
           <BottomButton onClick={handleModalOpen}>HOW TO USE</BottomButton>

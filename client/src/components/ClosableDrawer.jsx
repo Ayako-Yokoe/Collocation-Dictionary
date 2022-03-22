@@ -18,11 +18,11 @@ const ClosableDrawer = (props) => {
     }
 
     const menus = [
-        {fnc: selectMenu, label: 'HOME', id: 'home', value: '/'},
+        {fnc: selectMenu, label: 'HOME', id: 'home', path: '/'},
         // {fnc: selectMenu, label: 'HOW-TO', id: 'how-to', value: '/'},
-        {fnc: selectMenu, label: 'PRACTICE', id: 'practice', value: '/'},
-        {fnc: selectMenu, label: 'QUIZ', id: 'quiz', value: '/'},
-        {fnc: selectMenu, label: 'LOGOUT', id: 'logout', value: '/'},
+        {fnc: selectMenu, label: 'PRACTICE', id: 'practice', path: '/practice'},
+        {fnc: selectMenu, label: 'QUIZ', id: 'quiz', path: '/quiz'},
+        {fnc: selectMenu, label: 'LOGOUT', id: 'logout', path: '/login'},
     ]
 
   return (
@@ -40,7 +40,7 @@ const ClosableDrawer = (props) => {
         >
         <List>
             {menus.map(menu => (
-                <ListItem button key={menu.id} onClick={(e) => menu.fnc(e, menu.value)}>
+                <ListItem button key={menu.id} onClick={(e) => menu.fnc(e, menu.path)}>
                     <ListItemText primary={menu.label}/>
                 </ListItem>
             ))}

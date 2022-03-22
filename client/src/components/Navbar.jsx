@@ -1,11 +1,11 @@
 import React, { useCallback, useState } from 'react'
+import { Link } from 'react-router-dom'
 // import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 // import HelpOutlineRoundedIcon from '@mui/icons-material/HelpOutlineRounded';
 
 import MenuIcon from '@mui/icons-material/Menu';
 import styled from 'styled-components'
 import ClosableDrawer from './ClosableDrawer';
-
 
 
 const Container = styled.div`
@@ -38,12 +38,12 @@ const ListItem = styled.li`
 
 const HamburgerMenu = styled.div`
   /* visibility: hidden; */
+  cursor: pointer;
 `
 
 
 const Navbar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false)
-
 
   const handleDrawerToggle = useCallback((event, isOpen) => {
     if(event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')){
@@ -52,21 +52,30 @@ const Navbar = () => {
     setSidebarOpen(isOpen)
   }, [sidebarOpen])
 
-
   return (
     <Container>
       <Wrapper>
         <Left>
-          <Logo>LOGO</Logo>
+          <Link to='/' style={{ color: '#fff' }}>
+            <Logo>LOGO</Logo>
+          </Link>
         </Left>
 
         <Right>
           <List>
-            <ListItem>HOME</ListItem>
+            <Link to='/' style={{ color: '#fff' }}>
+              <ListItem>HOME</ListItem>
+            </Link>
             {/* <ListItem onClick={handleModalOpen}>HOW-TO</ListItem> */}
-            <ListItem>PRACTICE</ListItem>
-            <ListItem>QUIZ</ListItem>
-            <ListItem>LOGOUT</ListItem>
+            <Link to='/practice' style={{ color: '#fff' }}>
+              <ListItem>PRACTICE</ListItem>
+            </Link>
+            <Link to='/quiz' style={{ color: '#fff' }}>
+              <ListItem>QUIZ</ListItem>
+            </Link>
+            {/* <Link to='/login' style={{ color: '#fff' }}> */}
+              <ListItem>LOGOUT</ListItem>
+            {/* </Link> */}
           </List>
 
           <HamburgerMenu onClick={(event) => handleDrawerToggle(event, true)}>
