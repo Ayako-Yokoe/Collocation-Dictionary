@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+
 const wordlistSlice = createSlice({
     name: 'wordlist',
     initialState: {

@@ -67,7 +67,7 @@ const Navbar = () => {
               <ListItem>HOME</ListItem>
             </Link>
             {/* <ListItem onClick={handleModalOpen}>HOW-TO</ListItem> */}
-            <Link to='/practice' style={{ color: '#fff' }}>
+            <Link to='/wordlist' style={{ color: '#fff' }}>
               <ListItem>PRACTICE</ListItem>
             </Link>
             <Link to='/quiz' style={{ color: '#fff' }}>

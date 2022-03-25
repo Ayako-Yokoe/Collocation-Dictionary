@@ -19,6 +19,7 @@ version: 1,
 storage,
 }
 
+
 const rootReducer = combineReducers({ user: userReducer, wordlist: wordListReducer })
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 

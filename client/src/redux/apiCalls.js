@@ -24,10 +24,13 @@ export const login = async (dispatch, user) => {
 }
 
 
-export const getWordlist = async (dispatch, id) => {
+
+// export const getWordlist = async (dispatch, id) => {
+export const getWordlist = async (dispatch) => {
     dispatch(getWordlistStart())
     try {
-        const res = await publicRequest.get(`/wordlist/find/${id}`)
+        // const res = await publicRequest.get(`/wordlist/find/${id}`)
+        const res = await publicRequest.get(`/wordlist`)
         dispatch(getWordlistSuccess(res.data))
     } catch(err) {
         dispatch(getWordlistFailure())
@@ -39,6 +42,7 @@ export const deleteWordlist = async (dispatch, id) => {
     dispatch(deleteWordlistStart())
     try {
         await publicRequest.delete(`/wordlist/${id}`)
+        // await publicRequest.delete(`/wordlist`)
         dispatch(deleteWordlistSuccess(id))
     } catch(err) {
         dispatch(deleteWordlistFailure())

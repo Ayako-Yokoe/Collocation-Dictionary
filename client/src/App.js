@@ -16,7 +16,7 @@ function App() {
         {/* <Route element={<PrivateRoute />}> */}
           <Route path='/' element={<Home />} />
           <Route path='/search' element={<Search />} />
-          <Route path='/practice' element={<Practice />} />
+          <Route path='/wordlist' element={<Practice />} />
           <Route path='/quiz' element={<Quiz />} />
         {/* </Route> */}
 

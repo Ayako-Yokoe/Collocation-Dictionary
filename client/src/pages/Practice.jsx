@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar'
 import styled from 'styled-components'
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
+import { useSelector } from 'react-redux';
 
 const Component = styled.div`
 `
@@ -32,16 +33,22 @@ const Page = styled.div``
 
 
 const Practice = () => {
+  const wordlist = useSelector(state => state.wordlist.wordlist)
+
+
   return (
     <Component>
       <Navbar />
       
       <Wrapper>
         <Wordlist>
-          <Word>word</Word>
+          {/* <Word>word</Word>
           <Example>example sentence </Example>
           <Example>example sentence </Example>
-          <Example>example sentence </Example>
+          <Example>example sentence </Example> */}
+
+          {wordlist}
+          
         </Wordlist>
       
       <Page>
