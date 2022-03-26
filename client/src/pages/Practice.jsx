@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { publicRequest } from '../requestMethods';
 import Navbar from '../components/Navbar'
 import styled from 'styled-components'
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import { useSelector } from 'react-redux';
+import { FlashcardArray } from "react-quizlet-flashcard";
 
 const Component = styled.div`
 `
@@ -32,8 +34,56 @@ const Example = styled.p`
 const Page = styled.div``
 
 
+
 const Practice = () => {
-  const wordlist = useSelector(state => state.wordlist.wordlist)
+  const [wordlist, setWordlist] = useState(
+    [
+      {
+      id: "",
+      front: "",
+      back: "",
+      }
+    ]
+  )
+
+  // const [cardArr, setCardArr] = useState([])
+
+  // const handleToArray = () => {
+  //   const card = Object.values(wordlist)
+  //   setCardArr(card)
+  //   console.log("card: " + card)
+  // }
+
+    
+  
+  // const [wordlist, setWordlist] = useState(
+  //   [{
+  //     id: "",
+  //     front: "",
+  //     back: "",
+  //   }]
+  //   )
+
+    
+
+  useEffect(() => {
+    const getWordlist = async () => {
+        try {
+            const res = await publicRequest.get('/wordlist')
+
+            res.data.map(r => {
+              setWordlist({
+                id: r._id,
+                front: r.collocation,
+                back: r.examples.map(ex => ex + " ").replaceAll("<[^>]*>", "")
+              })
+            })
+        } catch {}
+    }
+    getWordlist()
+    // handleToArray()
+}, [])
+
 
 
   return (
@@ -42,12 +92,14 @@ const Practice = () => {
       
       <Wrapper>
         <Wordlist>
-          {/* <Word>word</Word>
-          <Example>example sentence </Example>
-          <Example>example sentence </Example>
-          <Example>example sentence </Example> */}
 
-          {wordlist}
+        <FlashcardArray cards={wordlist} count={false} control={false} />
+        
+        {/* {wordlist.map(word => (
+          <p>{word.wordlist}</p>
+        ))} */}
+
+        
           
         </Wordlist>
       

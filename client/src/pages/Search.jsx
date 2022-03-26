@@ -5,7 +5,6 @@ import styled from 'styled-components'
 import Navbar from '../components/Navbar'
 import { addWordlist } from '../redux/apiCalls'
 import Checkbox from '@mui/material/Checkbox';
-import { useCallback } from 'react'
 
 
 const Container = styled.div`
@@ -72,21 +71,15 @@ const Search = () => {
   }])
   const [isLoading, setIsLoading] = useState(false)
   const dispatch = useDispatch()
-
-  const [removedTagEx, setRemovedTagEx] = useState([])
-
  
-  const [practiceWord, setPracticeWord] = useState("")
-  // const [isSelected, setIsSelected] = useState(false)
-  // const [practiceList, setPracticeList] = useState(
-  //   {
-  //     collocation: "",
-  //     id: ""
-  //   }
-  // )
+  // const [practiceWord, setPracticeWord] = useState("")
+  const [practiceList, setPracticeList] = useState(
+    {
+      collocation: "",
+      examples: []
+    }
+  )
 
-  // let strippedString = originalString.replace(/(<([^>]+)>)/gi, "");
-  // const convertedExamples = results.map(result => result.examples.replace(/<\/?[^>]+>/gi, ''))
 
   const options = {
     method: 'GET',
@@ -109,69 +102,17 @@ const Search = () => {
       // setResults("") ? need value?
   }
 
+  // useEffect(() => {
+  //   practiceWord !== "" &&
+  //   addWordlist(dispatch, practiceWord)
+  // }, [practiceWord])
 
-useEffect(() => {
-  const tagRemove = (results) => {
-    let parentArr = []
-    for(let i = 0; i < results.length; i++){
-      let childArr = []
-      for(let j = 0; j < 3; j++){
-          childArr.push(results[i].examples[j]?.replace(/<\/?[^>]+>/gi, ''))
-      }
-    parentArr.push(childArr.slice(0, 3)) 
-    }
-    return parentArr
-    // setRemovedTagEx(parentArr)
 
-    // parentArr.map(arr => {
-    //   setRemovedTagEx(arr)
-    // })
-    
-
+  const handleAdd = (value) => {
+    const { collocation, examples } = value
+    const wordlist = { collocation, examples }
+    addWordlist(dispatch, wordlist)
   }
-  tagRemove(results)
-  // setRemovedTagEx((tagRemove(results)))
-  
-}, [results])
-
-console.log("typeof: " + removedTagEx)
-
-
-// const tagRemove = (results) => {
-//   let parentArr = []
-//   for(let i = 0; i < results.length; i++){
-//     let childArr = []
-//     for(let j = 0; j < 3; j++){
-//         childArr.push(results[i].examples[j]?.replace(/<\/?[^>]+>/gi, ''))
-//     }
-//   parentArr.push(childArr.slice(0, 3)) 
-//   }
-//   return parentArr
-//   // setRemovedTagEx(parentArr)
-// }
-
-
-
-// KEEP
-// const tagRemove = (results) => {
-//     let parentArr = []
-//     for(let i = 0; i < results.length; i++){
-//       let childArr = []
-//       for(let j = 0; j < 3; j++){
-//           childArr.push(results[i].examples[j].replace(/<\/?[^>]+>/gi, ''))
-//       }
-//     parentArr.push(childArr.slice(0, 3)) 
-//     }
-//     return parentArr
-// }
-// console.log(tagRemove(results))
-
-
-
-
-  useEffect(() => {
-    addWordlist(dispatch, practiceWord)
-  }, [practiceWord])
 
 
   return (
@@ -186,45 +127,22 @@ console.log("typeof: " + removedTagEx)
         <Bottom>
           {isLoading && results.map(result => (
             <Results key={result.id}>
-
-              {/* <Checkbox type='checkbox' id='resultId'  />
-              <Collocation htmlFor='resultId' >{result.collocation}</Collocation>  */}
-
-              {/* <Checkbox type='checkbox' id='resultId'  onClick={() => handleSelect(result)}  />
-              <Collocation htmlFor='resultId' onClick={() => handleSelect(result)} >{result.collocation}</Collocation> */}
-              {/* <Collocation htmlFor='resultId' value={result} onClick={(e) => handleAddToWordlist(e.target.value)}>{result.collocation}</Collocation> */}
-
-              {/* <Checkbox type='checkbox' id='resultId' value={result.id} onClick={(e) => toggleSelect(e.target.value)}  />
-              <Collocation htmlFor='resultId' value={result.id} onClick={(e) => toggleSelect(e.target.value)}>{result.collocation}</Collocation> */}
-
-              {/* <Checkbox type='checkbox' id='resultId' value={result.id}  onClick={(e) => handleAddToWordlist(e.target.value)} />
-              <Collocation htmlFor='resultId' value={result.id} onClick={(e) => handleAddToWordlist(e.target.value)} >{result.collocation}</Collocation> */}
-
-              {/* <Collocation onClick={() => handleAddToWordlist(result.collocation)}>
-                <Checkbox  />{result.collocation}
+              {/* <Collocation onClick={() => setPracticeWord(result.collocation)}>
+                {/* <Checkbox  />{result.collocation}  */}
+                {/* {result.collocation} <button>Add</button>
               </Collocation> */}
-              {/* <Collocation onClick={() => handleAddToWordlist(result.collocation)}> */}
-              <Collocation onClick={() => setPracticeWord(result.collocation)}>
+
+              <Collocation onClick={() => handleAdd(result)}>
                 {/* <Checkbox  />{result.collocation}  */}
                 {result.collocation} <button>Add</button>
               </Collocation>
-
-              {/* no break with tag */}
-              {/* <Examples>{result.examples}</Examples> */}
-              {/* break with tag */}
-              {/* <Examples>{result.examples.map(example => <p>{example}</p>)}</Examples> */}
-
-              {/* {removedTagEx && removedTagEx.map(example => {
-                <p key={example}>{example}</p>
-              })} */}
-
-              {removedTagEx}
-
+ 
+              {result.examples.map(example => (
+                <Examples key={example} dangerouslySetInnerHTML={{ __html: example }} />
+              ))}
               
             </Results>
-            
           ))}
-          
         </Bottom>
 
       </Wrapper>

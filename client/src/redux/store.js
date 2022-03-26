@@ -1,6 +1,7 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import userReducer from './userRedux'
 import wordListReducer from './wordListRedux'
+import quizlistReducer from './quizRedux'
 import {
     persistStore,
     persistReducer,
@@ -20,7 +21,7 @@ storage,
 }
 
 
-const rootReducer = combineReducers({ user: userReducer, wordlist: wordListReducer })
+const rootReducer = combineReducers({ user: userReducer, wordlist: wordListReducer, quizlist: quizlistReducer })
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 export const store = configureStore({
