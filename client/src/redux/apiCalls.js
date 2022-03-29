@@ -63,7 +63,8 @@ export const addWordlist = async (dispatch, wordlist) => {
     dispatch(addWordlistStart())
     try {
         // const res = await publicRequest.post('/wordlist', { wordlist })
-        const res = await publicRequest.post('/wordlist',  wordlist )        
+        // const res = await publicRequest.post('/wordlist',  wordlist ) 
+        const res = await publicRequest.post('/wordlist',  { front: wordlist.collocation, back: wordlist.examples } ) 
         dispatch(addWordlistSuccess(res.data))
     } catch(err) {
         dispatch(addWordlistFailure())

@@ -1,6 +1,13 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import styled from 'styled-components'
 
+
+const Container = styled.div`
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+`
 
 
 // without mongodb? use direct access to api?
@@ -8,10 +15,18 @@ import axios from 'axios'
 
 const Quiz = () => {
   const [search, setSearch] = useState('')
-  const [results, setResults] = useState([{ collocation: "" }])
+  const [results, setResults] = useState([{
+    id: "",
+    collocation: "",
+    examples: []
+}])
   const [isLoading, setIsLoading] = useState(false)
 
+// console.log("restults collocation: " + results[0].collocation)
+
+
   const [answer, setAnswer] = useState('')
+  const [correct, setCorrect] = useState(false)
 
 
   const options = {
@@ -32,34 +47,48 @@ const Quiz = () => {
         console.error(err);
       });
       setIsLoading(true)
-      // setResults("") ? need value?
   }
+
+  // empty the input field
+
 
   const handleCheckAnswer = () => {
-    let x 
-    results.map(result => (
-      result.collocation === answer 
-      ? x = "correct"
-      : x = "wrong"
-    ))
+    results.map(result => {
+      //result.collocation === answer ? setCorrect(true) : setCorrect(false)
+      result.collocation === answer ? console.log("true") : console.log("false")
+
+    })
   }
 
+
   return (
-    <div>
+    <Container>
       <div>
         <input type="text" placeholder='search' onChange={(e) => setSearch(e.target.value)}  />
         <button onClick={searchWord} >search</button>
+
+        <p>{search}</p>
+
+        {/* {results && results.map(result =>  (
+          <p>Collocation: {result.collocation}</p>
+        ))} */}
       </div>
 
       <div>
-        <input type='text' placeholder='collocation' value={answer} onChange={(e) => setAnswer(e.target.value)} />
-        <button onClick={handleCheckAnswer}>check</button>
+        {/* <input type='text' placeholder='type collocation' value={answer} onChange={(e) => setAnswer(e.target.value)} />
+        <button onClick={handleCheckAnswer}>check</button> */}
+
+        <input type='text' placeholder='type collocation' onChange={(e) => setAnswer(e.target.value)}  />
+        <button onClick={() => handleCheckAnswer()} >check</button> 
+        { correct ? <p>Correct</p> : <p>Let's try</p>}
+        
+
         {/* {results.map(result => (
             result.collocation === answer ? <p>correct</p> : <p>wrong</p>
         ))} */}
         
       </div>
-    </div>
+    </Container>
   )
 }
 

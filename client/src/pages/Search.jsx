@@ -111,6 +111,11 @@ const Search = () => {
   const handleAdd = (value) => {
     const { collocation, examples } = value
     const wordlist = { collocation, examples }
+    // const stringExamples = examples.toString()
+    // const wordlist = { front: collocation, back: stringExamples }
+
+  console.log("handleAdd: " + wordlist.back)
+
     addWordlist(dispatch, wordlist)
   }
 
