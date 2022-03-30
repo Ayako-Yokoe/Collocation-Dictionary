@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import Navbar from '../components/Navbar'
 import { addWordlist } from '../redux/apiCalls'
 import Checkbox from '@mui/material/Checkbox';
+import responsive from '../responsive'
 
 
 const Container = styled.div`
@@ -18,18 +19,66 @@ const Wrapper = styled.div`
   align-items: center;
 `
 const Top = styled.div`
-  margin: 4rem auto 3rem auto;
+    margin: 2rem auto 1rem 2rem;
+
+    @media only screen and ${responsive.device.s}{
+      margin: 2rem auto 1rem auto;
+    }
+    @media only screen and ${responsive.device.m}{
+      margin: 4rem auto 3rem auto;
+    }
+    @media only screen and ${responsive.device.l}{
+
+    }
+    @media only screen and ${responsive.device.xl}{
+
+    }
 `
 const SearchInput = styled.input`
-  padding: 0.8rem;
+  margin-left: 1rem;
+  padding: 0.8rem 0.4rem 0.8rem 1.4rem;
   font-size: 1.2rem;
   letter-spacing: 2px;
   outline: none;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  width: 50%;
+
+    @media only screen and ${responsive.device.s}{
+      padding: 0.5rem 0.1rem 0.5rem 1rem;
+      font-size: 0.8rem;
+    }
+    @media only screen and ${responsive.device.m}{
+
+    }
+    @media only screen and ${responsive.device.l}{
+
+    }
+    @media only screen and ${responsive.device.xl}{
+
+    }
 `
 const SearchButton = styled.button`
-  padding: 0.8rem;
+  padding: 0.8rem 1.4rem 0.8rem 0.8rem;
   font-size: 1.2rem;
   outline: none;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  width: 30%;
+
+    @media only screen and ${responsive.device.s}{
+      padding: 0.5rem 0.1rem 0.5rem 1rem;
+      font-size: 0.8rem;
+    }
+    @media only screen and ${responsive.device.m}{
+
+    }
+    @media only screen and ${responsive.device.l}{
+
+    }
+    @media only screen and ${responsive.device.xl}{
+
+    }
 `
 const Bottom = styled.div`
   width: 0 auto;
@@ -54,13 +103,26 @@ const Collocation = styled.li`
   margin-bottom: 0.5rem;
   font-size: 1.2rem;
   cursor: pointer;
+
+@media only screen and ${responsive.device.s}{
+
+}
+@media only screen and ${responsive.device.m}{
+
+}
+@media only screen and ${responsive.device.l}{
+
+}
+ @media only screen and ${responsive.device.xl}{
+
+}
+
 `
 const Examples = styled.li`
   font-size: 1.0rem;
   letter-spacing: 2px;
   line-height: 1.4;
 `
-
 
 const Search = () => {
   const [inputSearch, setInputSearch] = useState('')
@@ -78,7 +140,6 @@ const Search = () => {
       examples: []
     }
   )
-
 
   const options = {
     method: 'GET',

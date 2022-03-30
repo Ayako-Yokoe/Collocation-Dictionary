@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import styled from 'styled-components'
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import responsive from '../responsive'
 
 //modal
 const style = {
@@ -29,32 +29,134 @@ const Wrapper = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-`
-const TopButton = styled.div`
-  /* margin: 3rem; */
-  padding: 2rem;
   text-align: center;
-  border: 1px solid gray;
-  cursor: pointer;
 `
-const Middle = styled.div`
-  display: flex;
-  align-items: center;
+
+const Title = styled.h2`
+  padding-bottom: 2rem;
+    @media only screen and ${responsive.device.m}{
+      padding-bottom: 2.5rem;
+      font-size: 1.5rem;
+    }
+    @media only screen and ${responsive.device.l}{
+      padding: 2rem 0 3rem 0;
+      font-size: 2.5rem;
+    }
+    @media only screen and ${responsive.device.xl}{
+      font-size: 2.6rem;
+    }
 `
-const MiddleButton = styled.div`
-  margin: 3rem;
-  padding: 2rem;
-  border: 1px solid gray;
+
+const StartButton = styled.div`
+  padding: 1rem 6rem;
+  margin-bottom: 2rem;
+  background-color: #e3364a; 
+  box-shadow: 0 5px 0 #ca1c30; 
+  border-radius: 60px;
+  color: #fff;
   cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    box-shadow: none;
+    transform: translateY(5px);
+  }
+
+    @media only screen and ${responsive.device.m}{
+      padding: 1.5rem 6rem;
+      font-size: 1.2rem;
+    }
+    @media only screen and ${responsive.device.l}{
+      padding: 1.8rem 6rem;
+      font-size: 1.5rem;
+    }
+    @media only screen and ${responsive.device.xl}{
+      padding: 2rem 6rem;
+      font-size: 1.6rem;
+    }
+`
+
+const PracticeButton = styled.div`
+  padding: 1rem 6rem;
+  margin-bottom: 2rem;
+  background-color: #e3364a; 
+  box-shadow: 0 5px 0 #ca1c30; 
+  border-radius: 60px;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    box-shadow: none;
+    transform: translateY(5px);
+  }
+
+  @media only screen and ${responsive.device.m}{
+      padding: 1.5rem 6rem;
+      font-size: 1.2rem;
+  }
+  @media only screen and ${responsive.device.l}{
+      padding: 1.8rem 6rem;
+      font-size: 1.5rem;
+  }
+  @media only screen and ${responsive.device.xl}{
+      padding: 2rem 6rem;
+      font-size: 1.6rem;
+  }
 ` 
-const Bottom = styled.div``
-const BottomButton = styled.div`
-  /* margin: 3rem; */
-  padding: 1rem;
-  margin: 0 auto;
-  text-align: center;
-  border: 1px solid gray;
+const QuizButton = styled.div`
+  padding: 1rem 6rem;
+  margin-bottom: 2rem;
+  background-color: #e3364a; 
+  box-shadow: 0 5px 0 #ca1c30; 
+  border-radius: 60px;
+  color: #fff;
   cursor: pointer;
+
+  &:hover {
+    box-shadow: none;
+    transform: translateY(5px);
+  }
+
+  @media only screen and ${responsive.device.m}{
+      padding: 1.5rem 6rem;
+      font-size: 1.2rem;
+  }
+  @media only screen and ${responsive.device.l}{
+      padding: 1.8rem 6rem;
+      font-size: 1.5rem;
+  }
+  @media only screen and ${responsive.device.xl}{
+      padding: 2rem 6rem;
+      font-size: 1.6rem;
+  }
+` 
+const BottomButton = styled.div`
+  padding: 1rem 5rem;
+  background-color: #e3364a; 
+  box-shadow: 0 5px 0 #ca1c30; 
+  border-radius: 60px;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    box-shadow: none;
+    transform: translateY(5px);
+  }
+
+  @media only screen and ${responsive.device.m}{
+      padding: 1.5rem 5rem;
+      font-size: 1.2rem;
+  }
+  @media only screen and ${responsive.device.l}{
+      padding: 1.8rem 6rem;
+      font-size: 1.5rem;
+  }
+  @media only screen and ${responsive.device.xl}{
+      padding: 2rem 6rem;
+      font-size: 1.6rem;
+  }
 `
 
 
@@ -62,24 +164,28 @@ const Home = () => {
   const [modalOpen, setModalOpen] = useState(false)
   const handleModalOpen = () => setModalOpen(true)
   const handleModalClose = () => setModalOpen(false)
+
   return (
     <Container>
       <Navbar />
       <Wrapper>
+
+        <Title>Collocation Dictionary</Title>
+        
         <Link to='/search'>
-          <TopButton>START</TopButton>
+          <StartButton>START</StartButton>
         </Link>
-        <Middle>
-          <Link to='/wordlist'>
-            <MiddleButton>PRACTICE</MiddleButton>
-          </Link>
-          <Link to='/quiz'>
-            <MiddleButton>QUIZ</MiddleButton>
-          </Link>
-        </Middle>
-        <Bottom>
-          <BottomButton onClick={handleModalOpen}>HOW TO USE</BottomButton>
-        </Bottom>
+
+        <Link to='/wordlist'>
+          <PracticeButton >PRACTICE</PracticeButton>
+        </Link>
+
+        <Link to='/quiz'>
+          <QuizButton>QUIZ</QuizButton>
+        </Link>
+      
+        <BottomButton onClick={handleModalOpen}>HOW TO USE</BottomButton>
+       
       </Wrapper>
 
       <Modal

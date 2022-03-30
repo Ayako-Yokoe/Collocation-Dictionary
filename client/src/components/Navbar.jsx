@@ -1,11 +1,9 @@
 import React, { useCallback, useState } from 'react'
 import { Link } from 'react-router-dom'
-// import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
-// import HelpOutlineRoundedIcon from '@mui/icons-material/HelpOutlineRounded';
-
 import MenuIcon from '@mui/icons-material/Menu';
 import styled from 'styled-components'
 import ClosableDrawer from './ClosableDrawer';
+import responsive from '../responsive';
 
 
 const Container = styled.div`
@@ -19,12 +17,19 @@ const Wrapper = styled.div`
   align-items: center;
 `
 const Left = styled.div`
-  margin: 3rem;
+  margin: 1rem;
+  @media only screen and ${responsive.device.s}{
+    margin: 2rem;
+  }
 `
-const Logo = styled.span``
+const Logo = styled.span`
+  /* font-size: ;
+  @media only screen and ${responsive.device.s}{
+    font-size: ;
+  } */
+`
 const Right = styled.div`
   display: flex;
-  flex-direction: row;
   justify-content: space-around;
   align-items: center;
 `
@@ -32,13 +37,40 @@ const List = styled.ul`
   list-style: none;
 `
 const ListItem = styled.li`
-  display: inline-block;
-  padding: 2rem;
-`
+  display: none;
 
+  @media only screen and ${responsive.device.m}{
+    list-style: none;
+    display: inline-block;
+    padding: 2rem 1rem;
+    font-size: 0.9em;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 2px;
+    transition: 0.5s ease;
+
+    &:hover {
+        cursor: pointer;
+        color: gray;
+    }
+
+  @media only screen and ${responsive.device.l}{
+    font-size: 1.2em;
+  }
+  @media only screen and ${responsive.device.xl}{
+    font-size: 1.4em;
+  }
+}
+`
 const HamburgerMenu = styled.div`
-  /* visibility: hidden; */
-  cursor: pointer;
+  visibility: visible;
+    margin: 1rem;
+    display: block;
+    cursor: pointer;
+
+    @media only screen and ${responsive.device.m}{
+        visibility: hidden;
+    }
 `
 
 
