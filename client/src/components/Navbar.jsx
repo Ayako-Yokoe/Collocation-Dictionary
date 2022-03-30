@@ -43,7 +43,7 @@ const ListItem = styled.li`
     list-style: none;
     display: inline-block;
     padding: 2rem 1rem;
-    font-size: 0.9em;
+    font-size: 0.9rem;
     color: #fff;
     font-weight: 700;
     letter-spacing: 2px;
@@ -55,10 +55,10 @@ const ListItem = styled.li`
     }
 
   @media only screen and ${responsive.device.l}{
-    font-size: 1.2em;
+    font-size: 1.2rem;
   }
   @media only screen and ${responsive.device.xl}{
-    font-size: 1.4em;
+    font-size: 1.4rem;
   }
 }
 `

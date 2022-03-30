@@ -3,6 +3,7 @@ import { publicRequest } from '../requestMethods';
 import Navbar from '../components/Navbar'
 import styled from 'styled-components'
 import { FlashcardArray } from 'react-quizlet-flashcard';
+import responsive from '../responsive'
 
 const Component = styled.div`
 `
@@ -20,13 +21,13 @@ const Wordlist = styled.div`
   justify-content: center;
   align-items: center;
 `
-const Word = styled.h2`
-  margin: 2rem;
-`
-const Example = styled.p`
-  margin: 1rem;
-`
-const Page = styled.div``
+// ??
+const style = {
+  backgroundColor: "red",
+  color: "white",
+  fontSize: "0.5rem"
+} 
+
 
 
 
@@ -54,9 +55,9 @@ const Practice = () => {
       <Wrapper>
         <Wordlist>
  
-       {wordlist &&
-        <FlashcardArray cards={wordlist} count={true} control={false} />
-        }
+        {wordlist &&
+          <FlashcardArray cards={wordlist} count={true} control={false} style={style} />
+          }
 
         </Wordlist>
       </Wrapper>

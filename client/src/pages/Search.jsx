@@ -4,7 +4,6 @@ import axios from 'axios'
 import styled from 'styled-components'
 import Navbar from '../components/Navbar'
 import { addWordlist } from '../redux/apiCalls'
-import Checkbox from '@mui/material/Checkbox';
 import responsive from '../responsive'
 
 
@@ -19,70 +18,72 @@ const Wrapper = styled.div`
   align-items: center;
 `
 const Top = styled.div`
-    margin: 2rem auto 1rem 2rem;
+    margin: 2rem auto 2rem auto;
+    text-align: center;
 
-    @media only screen and ${responsive.device.s}{
-      margin: 2rem auto 1rem auto;
-    }
     @media only screen and ${responsive.device.m}{
       margin: 4rem auto 3rem auto;
-    }
-    @media only screen and ${responsive.device.l}{
-
+      width: 60%;
     }
     @media only screen and ${responsive.device.xl}{
-
+      width: 40%;
     }
 `
 const SearchInput = styled.input`
-  margin-left: 1rem;
-  padding: 0.8rem 0.4rem 0.8rem 1.4rem;
-  font-size: 1.2rem;
+  padding: 0.5rem 0.1rem 0.5rem 0.8rem;
+  font-size: 1rem;
   letter-spacing: 2px;
   outline: none;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
-  width: 50%;
+  width: 70%;
 
     @media only screen and ${responsive.device.s}{
       padding: 0.5rem 0.1rem 0.5rem 1rem;
-      font-size: 0.8rem;
+      font-size: 1.2rem;
     }
     @media only screen and ${responsive.device.m}{
-
+      padding: 0.8rem 0.1rem 0.8rem 1rem;
+      font-size: 0.9rem;
     }
     @media only screen and ${responsive.device.l}{
-
+      padding: 0.8rem 0.1rem 0.8rem 1.2rem;
+      font-size: 1.2rem;
     }
     @media only screen and ${responsive.device.xl}{
-
+      padding: 0.8rem 0.1rem 0.8rem 1.4rem;
+      font-size: 1.4rem;
     }
 `
 const SearchButton = styled.button`
-  padding: 0.8rem 1.4rem 0.8rem 0.8rem;
-  font-size: 1.2rem;
+  padding: 0.5rem 0.7rem 0.5rem 0.5rem;
+  font-size: 1rem;
   outline: none;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
   width: 30%;
 
     @media only screen and ${responsive.device.s}{
-      padding: 0.5rem 0.1rem 0.5rem 1rem;
-      font-size: 0.8rem;
+      font-size: 1.2rem;
     }
     @media only screen and ${responsive.device.m}{
-
+      padding: 0.8rem 1rem 0.8rem 0.8rem;
+      font-size: 0.9rem;
     }
     @media only screen and ${responsive.device.l}{
-
+      padding: 0.8rem;
+      font-size: 1.2rem;
     }
     @media only screen and ${responsive.device.xl}{
-
+      font-size: 1.4rem;
     }
 `
 const Bottom = styled.div`
-  width: 0 auto;
+  /* width: 0 auto; */
   max-width: 80%;
+  @media only screen and ${responsive.device.l}{
+    max-width: 70%;
+  }
 `
 const Results = styled.ul`
   margin: 1rem;
@@ -104,24 +105,49 @@ const Collocation = styled.li`
   font-size: 1.2rem;
   cursor: pointer;
 
-@media only screen and ${responsive.device.s}{
+  @media only screen and ${responsive.device.s}{
+    font-size: 1.4rem;
+  }
+  @media only screen and ${responsive.device.m}{
+    font-size: 1.2rem;
+  }
+  @media only screen and ${responsive.device.l}{
+    font-size: 1.6rem;
+  }
+  @media only screen and ${responsive.device.xl}{
+    font-size: 1.8rem;
+  }
+`
+const AddButton = styled.button`
+  margin-left: 0.5rem;
+  padding: 0.3rem;
+  font-size: 0.8rem;
+  cursor: pointer;
 
-}
-@media only screen and ${responsive.device.m}{
-
-}
-@media only screen and ${responsive.device.l}{
-
-}
- @media only screen and ${responsive.device.xl}{
-
-}
-
+  @media only screen and ${responsive.device.l}{
+    font-size: 1.2rem;
+  }
+  @media only screen and ${responsive.device.xl}{
+    font-size: 1.4rem;
+  }
 `
 const Examples = styled.li`
-  font-size: 1.0rem;
+  font-size: 1rem;
   letter-spacing: 2px;
   line-height: 1.4;
+
+    @media only screen and ${responsive.device.s}{
+      font-size: 1.2rem;
+    }
+    @media only screen and ${responsive.device.m}{
+      font-size: 1rem;
+    }
+    @media only screen and ${responsive.device.l}{
+      font-size: 1.4rem;
+    }
+    @media only screen and ${responsive.device.xl}{
+      font-size: 1.6rem;
+    }
 `
 
 const Search = () => {
@@ -175,7 +201,7 @@ const Search = () => {
       <Navbar /> 
       <Wrapper>
         <Top>
-          <SearchInput type="text" value={inputSearch || ""} placeholder='search' onChange={(e) => setInputSearch(e.target.value)}  />
+          <SearchInput type="text" value={inputSearch || ""} placeholder='Enter a word' onChange={(e) => setInputSearch(e.target.value)}  />
           <SearchButton onClick={searchWord} >search</SearchButton>
         </Top>
 
@@ -183,8 +209,7 @@ const Search = () => {
           {isLoading && results.map(result => (
             <Results key={result.id}>
               <Collocation onClick={() => handleAdd(result)}>
-                {/* <Checkbox  />{result.collocation}  */}
-                {result.collocation} <button>Add</button>
+                {result.collocation} <AddButton>Add</AddButton>
               </Collocation>
  
               {result.examples.map(example => (
