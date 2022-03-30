@@ -70,7 +70,7 @@ const Home = () => {
           <TopButton>START</TopButton>
         </Link>
         <Middle>
-          <Link to='/practice'>
+          <Link to='/wordlist'>
             <MiddleButton>PRACTICE</MiddleButton>
           </Link>
           <Link to='/quiz'>
@@ -90,10 +90,18 @@ const Home = () => {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
+            Collocation Dictionary
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+            A collocation is a group of two or more words often used together.
+            You can search, practice, and test to improve your vocabulary.
+            <br />
+            <b>START</b>: Type Verb, Noun, or Adjective that you want to look up.
+                          Add a collocation to a wordlist to practice later.
+            <br />
+            <b>PRACTICE</b>: Practice a collocation. Check its examples on the back of the flashcard.
+            <br />
+            <b>QUIZ</b>: Type a verb, noun, or adjective you want to test. Then, type as many collocations as you remember.
           </Typography>
         </Box>
       </Modal>

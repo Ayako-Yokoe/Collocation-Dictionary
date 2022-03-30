@@ -14,11 +14,15 @@ const Wrapper = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-top: 2rem;
+  height: 60vh;
+  width: 80%;
+  margin: 2rem auto;
 `
 const SearchField = styled.div`
   flex: 1;
   text-align: center;
-  margin: 2rem auto;
+  /* margin-top: 2rem; */
   /* background-color: pink; */
 `
 const InputField = styled.input`
@@ -34,12 +38,13 @@ const Button = styled.button`
 `
 const SearchWord = styled.p`
   font-size: 1.2rem;
-  padding: 2rem;
+  padding: 2rem 2.5rem;
+  text-align: start;
 `
 const AnswerField = styled.div`
   flex: 2;
   text-align: center;
-  margin: 2rem auto;
+  /* margin-top: 2rem; */
   /* background-color: lightblue; */
 `
 const Answer = styled.p`
@@ -55,6 +60,7 @@ const ResetButton = styled.button`
 
 
 const Quiz = () => {
+  const [inputSearch, setInputSearch] = useState('')
   const [search, setSearch] = useState('')
   const [results, setResults] = useState([{
     id: "",
@@ -66,30 +72,39 @@ const Quiz = () => {
   const [answer, setAnswer] = useState('')
   const [correct, setCorrect] = useState(false)
 
-  // console.log("search: " + search)
-  // console.log("results: " + results)
-  // console.log("inputAnswer: " + inputAnswer)
-  // console.log("answer: " + answer)
-  // console.log("correct: " + correct)
-  // console.log("=========================")
+  console.log("inputSearch: " + inputSearch)
+  console.log("search: " + search)
+  console.log("results: " + results)
+  console.log("inputAnswer: " + inputAnswer)
+  console.log("answer: " + answer)
+  console.log("correct: " + correct)
+  console.log("=========================")
 
   const options = {
     method: 'GET',
     url: 'https://linguatools-english-collocations.p.rapidapi.com/bolls/',
-    params: {lang: 'en', query: 'smoke', max_results: '15'},
+    //params: {lang: 'en', query: `${search}`, max_results: '15'},
+    params: {lang: 'en', query: `${inputSearch}`, max_results: '15'},
     headers: {
       'x-rapidapi-host': process.env.REACT_APP_rapidapi_host,
       'x-rapidapi-key': process.env.REACT_APP_rapidapi_key,
     }
   };
-  
+
+
   const searchWord = async () => {
+
+      setSearch(inputSearch)
+      setInputSearch('')
+
       await axios.request(options).then((res) => {
         setResults(res.data)
       }).catch((err) => {
         console.error(err);
       });
       setIsLoading(true)
+
+      // setSearch('')
   }
 
   const handleCheckAnswer = () => {
@@ -98,17 +113,19 @@ const Quiz = () => {
 
     const tempAnswer = inputAnswer
     if(results === []) return
-    let obj = results.filter(r => r.collocation === tempAnswer)
-    obj.length > 0 ? setCorrect(true) : setCorrect(false)
+    let arr = results.filter(result => result.collocation === tempAnswer)
+    arr.length > 0 ? setCorrect(true) : setCorrect(false)
     
     setAnswer('')
   }
 
   const handleReset = () => {
+    setInputSearch('')
     setSearch('')
     setResults([])
     setInputAnswer('')
     setAnswer('')
+    setCorrect(false)
   }
 
   return (
@@ -116,9 +133,9 @@ const Quiz = () => {
       <Navbar />
       <Wrapper>
       <SearchField>
-        <InputField type="text" value={search || ""} placeholder='search' onChange={(e) => setSearch(e.target.value)}  />
+        <InputField type="text" value={inputSearch || ""} placeholder='search' onChange={(e) => setInputSearch(e.target.value)}  />
         <Button onClick={searchWord} >search</Button>
-        <SearchWord>{search}</SearchWord>
+        <SearchWord>Test word: {search}</SearchWord>
       </SearchField>
 
       <AnswerField>

@@ -11,14 +11,6 @@ import {
     addWordlistSuccess,
     addWordlistFailure
 } from './wordListRedux'
-import {
-    getQuizlistStart,
-    getQuizlistSuccess,
-    getQuizlistFailure,
-    deleteQuizlistStart,
-    deleteQuizlistSuccess,
-    deleteQuizlistFailure,
-} from './quizRedux'
 
 
 export const login = async (dispatch, user) => {
@@ -35,7 +27,7 @@ export const login = async (dispatch, user) => {
 
 // export const getWordlist = async (dispatch, id) => {
 export const getWordlist = async (dispatch) => {
-    dispatch(getQuizlistStart())
+    dispatch(getWordlistStart())
     try {
         // const res = await publicRequest.get(`/wordlist/find/${id}`)
         const res = await publicRequest.get(`/wordlist`)
@@ -72,25 +64,3 @@ export const addWordlist = async (dispatch, wordlist) => {
 }
 
 
-export const getQiuzlist = async (dispatch) => {
-    dispatch(getWordlistStart())
-    try {
-        // const res = await publicRequest.get(`/quiz/find/${id}`)
-        const res = await publicRequest.get(`/quiz`)
-        dispatch(getQuizlistSuccess(res.data))
-    } catch(err) {
-        dispatch(getQuizlistFailure())
-    }
-}
-
-
-export const deleteQuizlist = async (dispatch, id) => {
-    dispatch(deleteQuizlistStart())
-    try {
-        await publicRequest.delete(`/quiz/${id}`)
-        // await publicRequest.delete(`/quiz`)
-        dispatch(deleteQuizlistSuccess(id))
-    } catch(err) {
-        dispatch(deleteQuizlistFailure())
-    }
-}

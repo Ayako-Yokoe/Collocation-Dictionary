@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import axios from 'axios'
 import styled from 'styled-components'
@@ -63,6 +63,7 @@ const Examples = styled.li`
 
 
 const Search = () => {
+  const [inputSearch, setInputSearch] = useState('')
   const [search, setSearch] = useState('')
   const [results, setResults] = useState([{
         id: "",
@@ -71,8 +72,6 @@ const Search = () => {
   }])
   const [isLoading, setIsLoading] = useState(false)
   const dispatch = useDispatch()
- 
-  // const [practiceWord, setPracticeWord] = useState("")
   const [practiceList, setPracticeList] = useState(
     {
       collocation: "",
@@ -84,8 +83,7 @@ const Search = () => {
   const options = {
     method: 'GET',
     url: 'https://linguatools-english-collocations.p.rapidapi.com/bolls/',
-    // params: {lang: 'en', query: 'smoke', max_results: '15'},
-    params: {lang: 'en', query: `${search}`, max_results: '10'},
+    params: {lang: 'en', query: `${inputSearch}`, max_results: '10'},
     headers: {
       'x-rapidapi-host': process.env.REACT_APP_rapidapi_host,
       'x-rapidapi-key': process.env.REACT_APP_rapidapi_key,
@@ -93,29 +91,20 @@ const Search = () => {
   };
   
   const searchWord = async () => {
-      await axios.request(options).then((res) => {
-        setResults(res.data)
-      }).catch((err) => {
-        console.error(err);
-      });
-      setIsLoading(true)
-      // setResults("") ? need value?
+    setSearch(inputSearch)
+    setInputSearch('')
+
+    await axios.request(options).then((res) => {
+      setResults(res.data)
+    }).catch((err) => {
+      console.error(err);
+    });
+    setIsLoading(true)
   }
-
-  // useEffect(() => {
-  //   practiceWord !== "" &&
-  //   addWordlist(dispatch, practiceWord)
-  // }, [practiceWord])
-
 
   const handleAdd = (value) => {
     const { collocation, examples } = value
     const wordlist = { collocation, examples }
-    // const stringExamples = examples.toString()
-    // const wordlist = { front: collocation, back: stringExamples }
-
-  console.log("handleAdd: " + wordlist.back)
-
     addWordlist(dispatch, wordlist)
   }
 
@@ -125,18 +114,13 @@ const Search = () => {
       <Navbar /> 
       <Wrapper>
         <Top>
-          <SearchInput type="text" placeholder='search' onChange={(e) => setSearch(e.target.value)}  />
+          <SearchInput type="text" value={inputSearch || ""} placeholder='search' onChange={(e) => setInputSearch(e.target.value)}  />
           <SearchButton onClick={searchWord} >search</SearchButton>
         </Top>
 
         <Bottom>
           {isLoading && results.map(result => (
             <Results key={result.id}>
-              {/* <Collocation onClick={() => setPracticeWord(result.collocation)}>
-                {/* <Checkbox  />{result.collocation}  */}
-                {/* {result.collocation} <button>Add</button>
-              </Collocation> */}
-
               <Collocation onClick={() => handleAdd(result)}>
                 {/* <Checkbox  />{result.collocation}  */}
                 {result.collocation} <button>Add</button>

@@ -31,32 +31,7 @@ const Page = styled.div``
 
 
 const Practice = () => {
-  const [wordlist, setWordlist] = useState(
-     [{
-      // id: "",
-      // front: "",
-      // back: []
-      } 
-    ])
-
-  // const objArray = Object.values(wordlist.back)
-
-  // const [cardArr, setCardArr] = useState([])
-
-  // const handleToArray = () => {
-  //   const card = Object.values(wordlist[0].back)
-  //   setCardArr({
-  //     id: wordlist.id,
-  //     front: wordlist.front,
-  //     back: card
-  //   })
-  //   console.log("card: " + card)
-  // }
-
-  // useEffect(() => {
-  //   handleToArray()
-  // }, [wordlist])
-
+  const [wordlist, setWordlist] = useState([{}])
   
   useEffect(() => {
     const getWordlist = async () => {
@@ -67,8 +42,8 @@ const Practice = () => {
         } catch {}
     }
     getWordlist()
-    
-}, [])
+      
+  }, [])
 
 
 
@@ -82,9 +57,6 @@ const Practice = () => {
        {wordlist &&
         <FlashcardArray cards={wordlist} count={true} control={false} />
         }
-        {/* {wordlist &&
-        <FlashcardArray cards={cardArr} count={false} control={false} />
-        } */}
 
         </Wordlist>
       </Wrapper>
