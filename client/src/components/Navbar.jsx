@@ -105,9 +105,6 @@ const Navbar = () => {
             <Link to='/quiz' style={{ color: '#fff' }}>
               <ListItem>QUIZ</ListItem>
             </Link>
-            {/* <Link to='/login' style={{ color: '#fff' }}> */}
-              <ListItem>LOGOUT</ListItem>
-            {/* </Link> */}
           </List>
 
           <HamburgerMenu onClick={(event) => handleDrawerToggle(event, true)}>

@@ -209,7 +209,7 @@ const Search = () => {
           {isLoading && results.map(result => (
             <Results key={result.id}>
               <Collocation onClick={() => handleAdd(result)}>
-                {result.collocation} <AddButton>Add</AddButton>
+                <b>{result.collocation}</b> <AddButton>Add</AddButton>
               </Collocation>
  
               {result.examples.map(example => (

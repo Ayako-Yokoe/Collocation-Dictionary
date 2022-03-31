@@ -1,13 +1,10 @@
 const router = require('express').Router()
-const { verifyTokenAndAuthorization } = require('./verifyToken')
 const Wordlist = require('../models/WordList')
 
 
 // Get
-// router.get('/', verifyTokenAndAuthorization, async (req,res) => {
 router.get('/', async (req,res) => {
     try{
-        // const wordlist = await Wordlist.findOne({ userId: req.params.userId })
         const wordlist = await Wordlist.find()
         res.status(200).json(wordlist)
     } catch(err) {
@@ -17,7 +14,6 @@ router.get('/', async (req,res) => {
 
 
 // Create
-// router.post('/', verifyTokenAndAuthorization, async (req,res) => {
 router.post('/', async (req,res) => {
     const newWordlist = new Wordlist(req.body)
     
@@ -31,7 +27,6 @@ router.post('/', async (req,res) => {
 
 
 // Delete
-// router.delete('/:id', verifyTokenAndAuthorization, async (req,res) => {
 router.delete('/:id', async (req,res) => {
     try {
         await Wordlist.findByIdAndDelete(req.params.id)

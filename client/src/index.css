@@ -20,6 +20,12 @@ body {
   /* background-color: #052853; */
 }
 
+@media (max-width: 500px) {
+  .FlashcardWrapper__item--content {
+    font-size: 0.8rem;
+  }
+}
+
 
 /* react default css (below) */
 

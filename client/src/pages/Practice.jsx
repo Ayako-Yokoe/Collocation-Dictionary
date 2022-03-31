@@ -29,6 +29,19 @@ const style = {
 } 
 
 
+// var sub_array = [];
+//     for (var i = 1; i <= 3; i++) {
+//         const obj = {
+//             front: res.front,
+//             back: res.back.join()
+//         };
+        
+//         sub_array.push(obj);
+    
+//     }
+//     setState(sub_array);
+// }
+
 
 
 const Practice = () => {
@@ -38,7 +51,11 @@ const Practice = () => {
     const getWordlist = async () => {
         try {
             const res = await publicRequest.get('/wordlist')
-            setWordlist(res.data)
+            setWordlist(res.data) 
+            // an empty array -> iterate  res.data -> push -> new array -> ob -> return a new array instead of wordlist
+
+
+            console.log(res.data)
                 
         } catch {}
     }

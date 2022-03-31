@@ -1,5 +1,4 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit'
-import userReducer from './userRedux'
 import wordListReducer from './wordListRedux'
 import {
     persistStore,
@@ -20,7 +19,7 @@ storage,
 }
 
 
-const rootReducer = combineReducers({ user: userReducer, wordlist: wordListReducer })
+const rootReducer = combineReducers({ wordlist: wordListReducer })
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 export const store = configureStore({
