@@ -177,7 +177,7 @@ const Home = () => {
       <Wrapper>
         <Title>Collocation Dictionary</Title>
         <Link to='/search'>
-          <StartButton>START</StartButton>
+          <StartButton>SEARCH</StartButton>
         </Link>
         <Link to='/wordlist'>
           <PracticeButton >PRACTICE</PracticeButton>

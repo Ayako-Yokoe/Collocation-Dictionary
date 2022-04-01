@@ -85,21 +85,21 @@ const Navbar = () => {
     <Container>
       <Wrapper>
         <Left>
-          <Link to='/' style={{ color: '#fff' }}>
-            <Logo>ABC</Logo>
-          </Link>
+          <Logo>
+            <Link to='/' style={{ color: '#fff' }}>ABC</Link>
+          </Logo>
         </Left>
         <Right>
           <List>
-            <Link to='/' style={{ color: '#fff' }}>
-              <ListItem>HOME</ListItem>
-            </Link>
-            <Link to='/wordlist' style={{ color: '#fff' }}>
-              <ListItem>PRACTICE</ListItem>
-            </Link>
-            <Link to='/quiz' style={{ color: '#fff' }}>
-              <ListItem>QUIZ</ListItem>
-            </Link>
+            <ListItem>
+              <Link to='/' style={{ color: '#fff' }}>HOME</Link>
+            </ListItem>
+            <ListItem>
+              <Link to='/wordlist' style={{ color: '#fff' }}>PRACTICE</Link>
+            </ListItem>
+            <ListItem>
+              <Link to='/quiz' style={{ color: '#fff' }}>QUIZ</Link>
+            </ListItem>
           </List>
           <HamburgerMenu onClick={(event) => handleDrawerToggle(event, true)}>
             <MenuIcon />
