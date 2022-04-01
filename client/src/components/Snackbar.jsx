@@ -1,5 +1,6 @@
 import React, { useState, forwardRef, useImperativeHandle } from 'react'
 import styled from 'styled-components'
+import responsive from '../responsive'
 
 
 const Container = styled.div`
@@ -7,15 +8,21 @@ const Container = styled.div`
     visibility: ${props => props.visibility === "show" ? "visible" : "hidden" };
 `
 const Compliment = styled.span`
-    font-size: 2rem;
     color: #000;
     text-align: center;
     background-color: #85FFBD;
     background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
-    padding: 3rem;
+    font-size: 0.8rem;
+    padding: 1rem;
     border-radius: 30px;
-    height: 30hv;
-    letter-spacing: 2px;
+    height: auto;
+
+    @media only screen and ${responsive.device.m}{
+        font-size: 2rem;
+        padding: 3rem;
+        height: 30hv;
+        letter-spacing: 2px;
+    }
 `
 
 const Snackbar = forwardRef((props, ref) => {

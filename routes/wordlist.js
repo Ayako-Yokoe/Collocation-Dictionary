@@ -12,7 +12,6 @@ router.get('/', async (req,res) => {
     }
 })
 
-
 // Create
 router.post('/', async (req,res) => {
     const newWordlist = new Wordlist(req.body)
@@ -24,7 +23,6 @@ router.post('/', async (req,res) => {
         res.status(500).json(err)
     }
 })
-
 
 // Delete
 router.delete('/:id', async (req,res) => {

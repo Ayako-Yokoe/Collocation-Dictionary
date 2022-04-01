@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import axios from 'axios'
-import styled from 'styled-components'
-import Navbar from '../components/Navbar'
 import { addWordlist } from '../redux/apiCalls'
+import Navbar from '../components/Navbar'
+import styled from 'styled-components'
 import responsive from '../responsive'
 
 
@@ -18,8 +18,8 @@ const Wrapper = styled.div`
   align-items: center;
 `
 const Top = styled.div`
-    margin: 2rem auto 2rem auto;
-    text-align: center;
+  margin: 2rem auto 2rem auto;
+  text-align: center;
 
     @media only screen and ${responsive.device.m}{
       margin: 4rem auto 3rem auto;
@@ -85,7 +85,6 @@ const SearchButton = styled.button`
     }
 `
 const Bottom = styled.div`
-  /* width: 0 auto; */
   max-width: 80%;
   background-color: #fff;
   @media only screen and ${responsive.device.l}{
@@ -96,17 +95,6 @@ const Results = styled.ul`
   margin: 1rem;
   list-style: none;
 `
-// const Checkbox = styled.input`
-//   margin-right: 0.5rem;
-//   width: 15px;
-//   height: 15px;
-//   cursor: pointer;
-// `
-// const Collocation = styled.label`
-//   margin-bottom: 0.5rem;
-//   font-size: 1.2rem;
-//   cursor: pointer;
-// `
 const Collocation = styled.li`
   margin-bottom: 0.5rem;
   font-size: 1.2rem;
@@ -131,12 +119,12 @@ const AddButton = styled.button`
   font-size: 0.8rem;
   letter-spacing: 2px;
   cursor: pointer;
-  /* background-color: var(--primary); */
   background-color: #0093E9;
   background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
   border: 1px solid #c0c0c0;
   border-radius: 3px;
   color: #fff;
+  visibility: ${props => props.isSearch === '' ?  "hidden" : "visible" };
 
   @media only screen and ${responsive.device.l}{
     font-size: 1.2rem;
@@ -174,12 +162,6 @@ const Search = () => {
   }])
   const [isLoading, setIsLoading] = useState(false)
   const dispatch = useDispatch()
-  const [practiceList, setPracticeList] = useState(
-    {
-      collocation: "",
-      examples: []
-    }
-  )
 
   const options = {
     method: 'GET',
@@ -190,17 +172,17 @@ const Search = () => {
       'x-rapidapi-key': process.env.REACT_APP_rapidapi_key,
     }
   };
-  
+
   const searchWord = async () => {
     setSearch(inputSearch)
     setInputSearch('')
-
+    setIsLoading(true)
     await axios.request(options).then((res) => {
       setResults(res.data)
     }).catch((err) => {
       console.error(err);
     });
-    setIsLoading(true)
+    setIsLoading(false)
   }
 
   const handleAdd = (value) => {
@@ -209,34 +191,36 @@ const Search = () => {
     addWordlist(dispatch, wordlist)
   }
 
-
   return (
     <Container>
       <Navbar /> 
       <Wrapper>
         <Top>
-          <SearchInput type="text" value={inputSearch || ""} placeholder='Enter a word' onChange={(e) => setInputSearch(e.target.value)}  />
+          <SearchInput 
+            type="text" 
+              value={inputSearch || ""} 
+              placeholder='Enter a word' 
+              onChange={(e) => setInputSearch(e.target.value)}  
+          />
           <SearchButton onClick={searchWord} >search</SearchButton>
         </Top>
-
         <Bottom>
-          {isLoading && results.map(result => (
+          {isLoading ? <p>Loading...</p> 
+          : results.map(result => ( 
             <Results key={result.id}>
               <Collocation onClick={() => handleAdd(result)}>
-                <b>{result.collocation}</b> <AddButton>Add</AddButton>
+                <b>{result.collocation}</b> <AddButton isSearch={search}>Add</AddButton>
               </Collocation>
- 
               {result.examples.map(example => (
                 <Examples key={example} dangerouslySetInnerHTML={{ __html: example }} />
               ))}
-              
             </Results>
           ))}
         </Bottom>
-
       </Wrapper>
     </Container>
   )
 }
+
 
 export default Search

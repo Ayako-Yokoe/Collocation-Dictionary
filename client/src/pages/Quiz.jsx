@@ -1,10 +1,9 @@
 import React, { useState, useRef } from 'react'
 import axios from 'axios'
-import styled from 'styled-components'
 import Navbar from '../components/Navbar'
-import responsive from '../responsive'
-
 import Snackbar from '../components/Snackbar'
+import styled from 'styled-components'
+import responsive from '../responsive'
 
 
 const Container = styled.div`
@@ -17,7 +16,6 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  /* height: auto; */
   width: 80%;
   margin: 5rem auto 1rem auto;
 
@@ -28,6 +26,7 @@ const Wrapper = styled.div`
 const SearchField = styled.div`
   flex: 1;
   text-align: center;
+  width: 100%;
 `
 const InputField = styled.input`
   padding: 0.5rem 0.1rem 0.5rem 1.0rem;
@@ -62,7 +61,6 @@ const Button = styled.button`
   border-bottom-right-radius: 30px;
   color: #fff;
  
-
   @media only screen and ${responsive.device.m}{
     font-size: 1rem;
   }
@@ -99,33 +97,12 @@ const TestWord = styled.span`
   font-weight: 500;
   padding-left: 0.8rem;
   letter-spacing: 2px;
-
 `
 const AnswerField = styled.div`
   flex: 2;
   text-align: center;
+  width: 100%;
 `
-const Answer = styled.p`
-  font-size: 1.2rem;
-  padding: 2rem;
-
-
-
-  @media only screen and ${responsive.device.m}{
-    padding: 2rem 1rem;
-  }
-  @media only screen and ${responsive.device.m}{
-    font-size: 1rem;
-  }
-  @media only screen and ${responsive.device.l}{
-    font-size: 1.3rem;
-    letter-spacing: 2px;
-  }
-  @media only screen and ${responsive.device.xl}{
-    font-size: 1.5rem;
-  }
-`
-
 const ResetButton = styled.button`
     padding: 0.5rem 1rem;
     font-size: 1rem;
@@ -133,13 +110,16 @@ const ResetButton = styled.button`
     cursor: pointer;
     position: fixed;
     bottom: 40px;
-    left: 45%;
+    left: 35%;
     background-color: #0093E9;
     background-image: linear-gradient(0deg, #0093E9 0%, #80D0C7 100%);
     border: 1px solid #c0c0c0;
     border-radius: 3px;
     color: #fff;
 
+    @media only screen and ${responsive.device.m}{
+      left: 45%;
+    }
     @media only screen and ${responsive.device.l}{
       font-size: 1.3rem;
       letter-spacing: 2px;
@@ -149,7 +129,6 @@ const ResetButton = styled.button`
       font-size: 1.5rem;
     }
 `
-
 
 const Quiz = () => {
   const [inputSearch, setInputSearch] = useState('')
@@ -163,16 +142,7 @@ const Quiz = () => {
   const [inputAnswer, setInputAnswer] = useState('')
   const [answer, setAnswer] = useState('')
   const [correct, setCorrect] = useState(false)
-
   const snackbarRef = useRef(null)
-
-  // console.log("inputSearch: " + inputSearch)
-  // console.log("search: " + search)
-  // console.log("results: " + results)
-  // console.log("inputAnswer: " + inputAnswer)
-  // console.log("answer: " + answer)
-  // console.log("correct: " + correct)
-  // console.log("=========================")
 
   const options = {
     method: 'GET',
@@ -220,17 +190,25 @@ const Quiz = () => {
       <Navbar />
       <Wrapper>
       <SearchField>
-        <InputField type="text" value={inputSearch || ""} placeholder='Enter a word' onChange={(e) => setInputSearch(e.target.value)}  />
+        <InputField 
+          type="text" 
+          value={inputSearch || ""} 
+          placeholder='Enter a word' 
+          onChange={(e) => setInputSearch(e.target.value)}  
+        />
         <Button onClick={searchWord} >search</Button>
         <SearchWord>Test word: <TestWord>{search}</TestWord></SearchWord>
       </SearchField>
-
       <AnswerField>
-        <InputField type='text' value={inputAnswer ? inputAnswer : ""} placeholder='type collocation' onChange={(e) => setInputAnswer(e.target.value)}  />
+        <InputField 
+          type='text' 
+          value={inputAnswer ? inputAnswer : ""} 
+          placeholder='type collocation' 
+          onChange={(e) => setInputAnswer(e.target.value)}  
+        />
         <Button onClick={handleCheckAnswer} >check</Button>         
       </AnswerField>
       </Wrapper>
-
       <Snackbar ref={snackbarRef} correct={correct} />
       <ResetButton onClick={handleReset}>Reset</ResetButton>
     </Container>

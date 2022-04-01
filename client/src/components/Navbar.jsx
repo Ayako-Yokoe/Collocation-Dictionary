@@ -1,19 +1,16 @@
 import React, { useCallback, useState } from 'react'
 import { Link } from 'react-router-dom'
-import MenuIcon from '@mui/icons-material/Menu';
+import MenuIcon from '@mui/icons-material/Menu'
+import ClosableDrawer from './ClosableDrawer'
 import styled from 'styled-components'
-import ClosableDrawer from './ClosableDrawer';
-import responsive from '../responsive';
+import responsive from '../responsive'
 
 
 const Container = styled.div`
   height: auto;
-  /* background-color: #000; */
   color: #fff;
-  /* background-color: var(--primary); */
   background-color: #0093E9;
   background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
-
 `
 const Wrapper = styled.div`
   display: flex;
@@ -26,12 +23,8 @@ const Left = styled.div`
     margin: 2rem;
   }
 `
-const Logo = styled.span`
-  /* font-size: ;
-  @media only screen and ${responsive.device.s}{
-    font-size: ;
-  } */
-`
+const Logo = styled.span``
+
 const Right = styled.div`
   display: flex;
   justify-content: space-around;
@@ -96,13 +89,11 @@ const Navbar = () => {
             <Logo>ABC</Logo>
           </Link>
         </Left>
-
         <Right>
           <List>
             <Link to='/' style={{ color: '#fff' }}>
               <ListItem>HOME</ListItem>
             </Link>
-            {/* <ListItem onClick={handleModalOpen}>HOW-TO</ListItem> */}
             <Link to='/wordlist' style={{ color: '#fff' }}>
               <ListItem>PRACTICE</ListItem>
             </Link>
@@ -110,14 +101,12 @@ const Navbar = () => {
               <ListItem>QUIZ</ListItem>
             </Link>
           </List>
-
           <HamburgerMenu onClick={(event) => handleDrawerToggle(event, true)}>
             <MenuIcon />
           </HamburgerMenu>
         </Right>
       </Wrapper>
       <ClosableDrawer open={sidebarOpen} onClose={handleDrawerToggle} />
-
     </Container>
   )
 }

@@ -19,10 +19,11 @@ const ClosableDrawer = (props) => {
 
     const menus = [
         {fnc: selectMenu, label: 'HOME', id: 'home', path: '/'},
+        {fnc: selectMenu, label: 'SEARCH', id: 'search', path: '/search'},
         {fnc: selectMenu, label: 'PRACTICE', id: 'practice', path: '/wordlist'},
         {fnc: selectMenu, label: 'QUIZ', id: 'quiz', path: '/quiz'},
     ]
-
+    
   return (
     <Container>
         <Drawer
@@ -30,7 +31,7 @@ const ClosableDrawer = (props) => {
             anchor={'right'}
             open={props.open}
             onClose={(event) => props.onClose(event, false)}
-            ModalProps={{keepMonted: true}}
+            ModalProps={{keepMounted: true}}
         >
         <div
             onClose={(event) => props.onClose(event, false)}

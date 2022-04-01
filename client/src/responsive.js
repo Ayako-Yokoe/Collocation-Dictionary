@@ -13,17 +13,3 @@ const device = {
 
 export default {size, device}
 
-// import responsive from '../responsive'
-
-// @media only screen and ${responsive.device.s}{
-
-// }
-// @media only screen and ${responsive.device.m}{
-
-// }
-// @media only screen and ${responsive.device.l}{
-
-// }
-// @media only screen and ${responsive.device.xl}{
-
-// }

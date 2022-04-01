@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import Modal from '@mui/material/Modal'
 import styled from 'styled-components'
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
 import responsive from '../responsive'
+
 
 //modal
 const style = {
@@ -13,11 +14,14 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
+  width: {
+    xs: 300, 
+    sm: 400, 
+  }
 };
 
 const Container = styled.div`
@@ -31,7 +35,6 @@ const Wrapper = styled.div`
   transform: translate(-50%, -50%);
   text-align: center;
 `
-
 const Title = styled.h2`
   padding-bottom: 2rem;
   
@@ -47,7 +50,6 @@ const Title = styled.h2`
       font-size: 2.6rem;
     }
 `
-
 const StartButton = styled.div`
   padding: 1rem 6rem;
   margin-bottom: 2rem;
@@ -77,7 +79,6 @@ const StartButton = styled.div`
       font-size: 1.6rem;
     }
 `
-
 const PracticeButton = styled.div`
   padding: 1rem 6rem;
   margin-bottom: 2rem;
@@ -174,25 +175,18 @@ const Home = () => {
     <Container>
       <Navbar />
       <Wrapper>
-
         <Title>Collocation Dictionary</Title>
-        
         <Link to='/search'>
           <StartButton>START</StartButton>
         </Link>
-
         <Link to='/wordlist'>
           <PracticeButton >PRACTICE</PracticeButton>
         </Link>
-
         <Link to='/quiz'>
           <QuizButton>QUIZ</QuizButton>
         </Link>
-      
         <BottomButton onClick={handleModalOpen}>HOW TO USE</BottomButton>
-       
       </Wrapper>
-
       <Modal
         open={modalOpen}
         onClose={handleModalClose}
