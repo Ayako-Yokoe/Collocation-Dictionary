@@ -8,8 +8,12 @@ import responsive from '../responsive';
 
 const Container = styled.div`
   height: auto;
-  background-color: #000;
+  /* background-color: #000; */
   color: #fff;
+  /* background-color: var(--primary); */
+  background-color: #0093E9;
+  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+
 `
 const Wrapper = styled.div`
   display: flex;
@@ -89,7 +93,7 @@ const Navbar = () => {
       <Wrapper>
         <Left>
           <Link to='/' style={{ color: '#fff' }}>
-            <Logo>LOGO</Logo>
+            <Logo>ABC</Logo>
           </Link>
         </Left>
 

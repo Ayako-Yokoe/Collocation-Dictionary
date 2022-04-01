@@ -19,7 +19,7 @@ const ClosableDrawer = (props) => {
 
     const menus = [
         {fnc: selectMenu, label: 'HOME', id: 'home', path: '/'},
-        {fnc: selectMenu, label: 'PRACTICE', id: 'practice', path: '/practice'},
+        {fnc: selectMenu, label: 'PRACTICE', id: 'practice', path: '/wordlist'},
         {fnc: selectMenu, label: 'QUIZ', id: 'quiz', path: '/quiz'},
     ]
 

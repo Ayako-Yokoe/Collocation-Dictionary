@@ -34,6 +34,7 @@ const SearchInput = styled.input`
   font-size: 1rem;
   letter-spacing: 2px;
   outline: none;
+  border: 1px solid #c0c0c0;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
   width: 70%;
@@ -58,10 +59,15 @@ const SearchInput = styled.input`
 const SearchButton = styled.button`
   padding: 0.5rem 0.7rem 0.5rem 0.5rem;
   font-size: 1rem;
+  letter-spacing: 2px;
   outline: none;
+  border: 1px solid #c0c0c0;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
   width: 30%;
+  background-color: #0093E9;
+  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+  color: #fff;
 
     @media only screen and ${responsive.device.s}{
       font-size: 1.2rem;
@@ -81,6 +87,7 @@ const SearchButton = styled.button`
 const Bottom = styled.div`
   /* width: 0 auto; */
   max-width: 80%;
+  background-color: #fff;
   @media only screen and ${responsive.device.l}{
     max-width: 70%;
   }
@@ -122,7 +129,14 @@ const AddButton = styled.button`
   margin-left: 0.5rem;
   padding: 0.3rem;
   font-size: 0.8rem;
+  letter-spacing: 2px;
   cursor: pointer;
+  /* background-color: var(--primary); */
+  background-color: #0093E9;
+  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+  border: 1px solid #c0c0c0;
+  border-radius: 3px;
+  color: #fff;
 
   @media only screen and ${responsive.device.l}{
     font-size: 1.2rem;

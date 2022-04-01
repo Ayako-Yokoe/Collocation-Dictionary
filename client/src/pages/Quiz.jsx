@@ -17,7 +17,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  height: auto;
+  /* height: auto; */
   width: 80%;
   margin: 5rem auto 1rem auto;
 
@@ -30,10 +30,13 @@ const SearchField = styled.div`
   text-align: center;
 `
 const InputField = styled.input`
-  padding: 0.5rem;
+  padding: 0.5rem 0.1rem 0.5rem 1.0rem;
   font-size: 1rem;
   width: 60%;
   outline: none;
+  border: 1px solid #c0c0c0;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
 
   @media only screen and ${responsive.device.m}{
     font-size: 1rem;
@@ -48,9 +51,17 @@ const InputField = styled.input`
   }
 `
 const Button = styled.button`
-  padding: 0.5rem;
+  padding: 0.5rem 0.7rem 0.5rem 0.5rem;
   font-size: 1rem;
   cursor: pointer;
+  background-color: #0093E9;
+  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+  border: 1px solid #c0c0c0;
+  border-radius: 3px;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  color: #fff;
+ 
 
   @media only screen and ${responsive.device.m}{
     font-size: 1rem;
@@ -66,6 +77,7 @@ const Button = styled.button`
 `
 const SearchWord = styled.p`
   font-size: 1.2rem;
+  letter-spacing: 2px;
   padding: 1.5rem 1rem;
   text-align: start;
 
@@ -86,6 +98,7 @@ const SearchWord = styled.p`
 const TestWord = styled.span`
   font-weight: 500;
   padding-left: 0.8rem;
+  letter-spacing: 2px;
 
 `
 const AnswerField = styled.div`
@@ -95,6 +108,8 @@ const AnswerField = styled.div`
 const Answer = styled.p`
   font-size: 1.2rem;
   padding: 2rem;
+
+
 
   @media only screen and ${responsive.device.m}{
     padding: 2rem 1rem;
@@ -114,10 +129,16 @@ const Answer = styled.p`
 const ResetButton = styled.button`
     padding: 0.5rem 1rem;
     font-size: 1rem;
+    letter-spacing: 2px;
     cursor: pointer;
     position: fixed;
     bottom: 40px;
     left: 45%;
+    background-color: #0093E9;
+    background-image: linear-gradient(0deg, #0093E9 0%, #80D0C7 100%);
+    border: 1px solid #c0c0c0;
+    border-radius: 3px;
+    color: #fff;
 
     @media only screen and ${responsive.device.l}{
       font-size: 1.3rem;

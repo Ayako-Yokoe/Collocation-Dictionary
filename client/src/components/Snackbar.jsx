@@ -7,11 +7,15 @@ const Container = styled.div`
     visibility: ${props => props.visibility === "show" ? "visible" : "hidden" };
 `
 const Compliment = styled.span`
-    font-size: 3rem;
+    font-size: 2rem;
+    color: #000;
     text-align: center;
-    background-color: pink;
+    background-color: #85FFBD;
+    background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
     padding: 3rem;
+    border-radius: 30px;
     height: 30hv;
+    letter-spacing: 2px;
 `
 
 const Snackbar = forwardRef((props, ref) => {

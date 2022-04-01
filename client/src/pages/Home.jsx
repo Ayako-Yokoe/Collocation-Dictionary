@@ -34,6 +34,7 @@ const Wrapper = styled.div`
 
 const Title = styled.h2`
   padding-bottom: 2rem;
+  
     @media only screen and ${responsive.device.m}{
       padding-bottom: 2.5rem;
       font-size: 1.5rem;
@@ -50,8 +51,9 @@ const Title = styled.h2`
 const StartButton = styled.div`
   padding: 1rem 6rem;
   margin-bottom: 2rem;
-  background-color: #e3364a; 
-  box-shadow: 0 5px 0 #ca1c30; 
+  background-color: #FBDA61;
+  background-image: linear-gradient(200deg, #FBDA61 0%, #FF5ACD 100%);
+  box-shadow: 0 5px 5px #d3d3d3;
   border-radius: 60px;
   color: #fff;
   cursor: pointer;
@@ -79,8 +81,9 @@ const StartButton = styled.div`
 const PracticeButton = styled.div`
   padding: 1rem 6rem;
   margin-bottom: 2rem;
-  background-color: #e3364a; 
-  box-shadow: 0 5px 0 #ca1c30; 
+  background-color: #FBDA61;
+  background-image: linear-gradient(200deg, #FBDA61 0%, #FF5ACD 100%);
+  box-shadow: 0 5px 5px #d3d3d3;
   border-radius: 60px;
   color: #fff;
   cursor: pointer;
@@ -107,8 +110,9 @@ const PracticeButton = styled.div`
 const QuizButton = styled.div`
   padding: 1rem 6rem;
   margin-bottom: 2rem;
-  background-color: #e3364a; 
-  box-shadow: 0 5px 0 #ca1c30; 
+  background-color: #FBDA61;
+  background-image: linear-gradient(200deg, #FBDA61 0%, #FF5ACD 100%);
+  box-shadow: 0 5px 5px #d3d3d3;
   border-radius: 60px;
   color: #fff;
   cursor: pointer;
@@ -133,8 +137,9 @@ const QuizButton = styled.div`
 ` 
 const BottomButton = styled.div`
   padding: 1rem 5rem;
-  background-color: #e3364a; 
-  box-shadow: 0 5px 0 #ca1c30; 
+  background-color: #FBDA61;
+  background-image: linear-gradient(200deg, #FBDA61 0%, #FF5ACD 100%);
+  box-shadow: 0 5px 5px #d3d3d3;
   border-radius: 60px;
   color: #fff;
   cursor: pointer;
