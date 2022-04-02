@@ -16,7 +16,7 @@ Collocation-Dictionary is a react web application utilizing fetching API to sear
 
 ## Front end - client
 
-![screen-gif](./READ.ME-ezgif-5-e26f42e190.gif)
+![screen-gif](./READ.ME-ezgif-5-34249c79c1.gif)
 
 **Search Page**<br/>
 Users can search for a collocation by typing a verb, noun, or adjective.<br/>
