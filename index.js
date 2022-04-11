@@ -16,6 +16,7 @@ mongoose
 app.use(cors())
 app.use(express.json())
 app.use('/api/wordlist', wordlistRouter)
+
 app.use(express.static(path.resolve(__dirname, './client/build')))
 
 
