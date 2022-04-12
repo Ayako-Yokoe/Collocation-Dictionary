@@ -1,12 +1,62 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import Navbar from '../components/Navbar'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Modal from '@mui/material/Modal'
 import styled from 'styled-components'
+import Navbar from '../components/Navbar'
 import responsive from '../responsive'
 
+
+const Home = () => {
+  const [modalOpen, setModalOpen] = useState(false)
+  const handleModalOpen = () => setModalOpen(true)
+  const handleModalClose = () => setModalOpen(false)
+
+  return (
+    <Container>
+      <Navbar />
+      <Wrapper>
+        <Title>Collocation Dictionary</Title>
+        <Link to='/search'>
+          <StartButton>SEARCH</StartButton>
+        </Link>
+        <Link to='/wordlist'>
+          <PracticeButton >PRACTICE</PracticeButton>
+        </Link>
+        <Link to='/quiz'>
+          <QuizButton>QUIZ</QuizButton>
+        </Link>
+        <BottomButton onClick={handleModalOpen}>HOW TO USE</BottomButton>
+      </Wrapper>
+      <Modal
+        open={modalOpen}
+        onClose={handleModalClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Collocation Dictionary
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            A collocation is a group of two or more words often used together.
+            You can search, practice, and test to improve your vocabulary.
+            <br />
+            <b>START</b>: Type Verb, Noun, or Adjective that you want to look up.
+                          Add a collocation to a wordlist to practice later.
+            <br />
+            <b>PRACTICE</b>: Practice a collocation. Check its examples on the back of the flashcard.
+            <br />
+            <b>QUIZ</b>: Type a verb, noun, or adjective you want to test. Then, type as many collocations as you remember.
+          </Typography>
+        </Box>
+      </Modal>
+    </Container>
+  )
+}
+
+export default Home
 
 //modal
 const style = {
@@ -164,55 +214,3 @@ const BottomButton = styled.div`
       font-size: 1.6rem;
   }
 `
-
-
-const Home = () => {
-  const [modalOpen, setModalOpen] = useState(false)
-  const handleModalOpen = () => setModalOpen(true)
-  const handleModalClose = () => setModalOpen(false)
-
-  return (
-    <Container>
-      <Navbar />
-      <Wrapper>
-        <Title>Collocation Dictionary</Title>
-        <Link to='/search'>
-          <StartButton>SEARCH</StartButton>
-        </Link>
-        <Link to='/wordlist'>
-          <PracticeButton >PRACTICE</PracticeButton>
-        </Link>
-        <Link to='/quiz'>
-          <QuizButton>QUIZ</QuizButton>
-        </Link>
-        <BottomButton onClick={handleModalOpen}>HOW TO USE</BottomButton>
-      </Wrapper>
-      <Modal
-        open={modalOpen}
-        onClose={handleModalClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Collocation Dictionary
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            A collocation is a group of two or more words often used together.
-            You can search, practice, and test to improve your vocabulary.
-            <br />
-            <b>START</b>: Type Verb, Noun, or Adjective that you want to look up.
-                          Add a collocation to a wordlist to practice later.
-            <br />
-            <b>PRACTICE</b>: Practice a collocation. Check its examples on the back of the flashcard.
-            <br />
-            <b>QUIZ</b>: Type a verb, noun, or adjective you want to test. Then, type as many collocations as you remember.
-          </Typography>
-        </Box>
-      </Modal>
-    </Container>
-  )
-}
-
-export default Home
-

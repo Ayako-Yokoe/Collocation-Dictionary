@@ -13,6 +13,7 @@ function App() {
         <Route path='/search' element={<Search />} />
         <Route path='/wordlist' element={<Practice />} />
         <Route path='/quiz' element={<Quiz />} />
+        <Route path="*" element={<h1>Error 404</h1>} />
       </Routes>
     </BrowserRouter>
   );

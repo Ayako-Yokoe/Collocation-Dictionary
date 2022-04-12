@@ -1,20 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { publicRequest } from '../requestMethods'
-import Navbar from '../components/Navbar'
 import { FlashcardArray } from 'react-quizlet-flashcard'
 import styled from 'styled-components'
+import { publicRequest } from '../requestMethods'
+import Navbar from '../components/Navbar'
 
-
-const Container = styled.div`
-  width: 100vw;
-  height: auto;
-`
-const Wrapper = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);  
-`
 
 const Practice = () => {
   const [wordlist, setWordlist] = useState([{}])
@@ -53,3 +42,14 @@ const Practice = () => {
 }
 
 export default Practice
+
+const Container = styled.div`
+  width: 100vw;
+  height: auto;
+`
+const Wrapper = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);  
+`

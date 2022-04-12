@@ -7,8 +7,6 @@ import ListItemText from '@mui/material/ListItemText'
 import styled from 'styled-components'
 
 
-const Container = styled.div``
-
 const ClosableDrawer = (props) => {
     const navigate = useNavigate()
 
@@ -51,3 +49,6 @@ const ClosableDrawer = (props) => {
 }
 
 export default ClosableDrawer
+
+
+const Container = styled.div``
