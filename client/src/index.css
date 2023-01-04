@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;500&display=swap");
 
 * {
   margin: 0;
@@ -14,7 +14,7 @@ a {
   text-decoration: none;
 }
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   letter-spacing: 2px;
 }
 .FlashcardArrayWrapper__CardHolder {
@@ -26,13 +26,17 @@ body {
   perspective: 1000px;
   max-width: 100%;
 }
-@media (max-width: 480px){
+@media (max-width: 480px) {
   .FlashcardArrayWrapper__CardHolder {
     width: 80%;
   }
 }
-@media (min-width: 481px){
+@media (min-width: 481px) {
   .FlashcardArrayWrapper__CardHolder {
     width: 90%;
   }
+}
+
+.FlashcardArrayWrapper {
+  width: 100% !important;
 }
