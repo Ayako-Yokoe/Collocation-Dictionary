@@ -16,49 +16,40 @@ import {
 const Navbar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
-  const handleDrawerToggle = useCallback(
-    (event, isOpen) => {
-      if (
-        event.type === "keydown" &&
-        (event.key === "Tab" || event.key === "Shift")
-      ) {
-        return
-      }
-      setSidebarOpen(isOpen)
-    },
-    [sidebarOpen]
-  )
+  const handleDrawerToggle = useCallback((event, isOpen) => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return
+    }
+    setSidebarOpen(isOpen)
+  }, [])
 
   return (
     <Container>
       <Wrapper>
         <Left>
-          <Logo>
-            <Link to="/" style={{ color: "#fff" }}>
-              ABC
-            </Link>
-          </Logo>
+          <Link to="/" style={{ color: "#fff" }}>
+            <Logo>ABC</Logo>
+          </Link>
         </Left>
         <Right>
           <List>
-            <ListItem>
-              <Link to="/" style={{ color: "#fff" }}>
-                HOME
-              </Link>
-            </ListItem>
-            <ListItem>
-              <Link to="/wordlist" style={{ color: "#fff" }}>
-                PRACTICE
-              </Link>
-            </ListItem>
-            <ListItem>
-              <Link to="/quiz" style={{ color: "#fff" }}>
-                QUIZ
-              </Link>
-            </ListItem>
+            <Link to="/" style={{ color: "#fff" }}>
+              <ListItem>HOME</ListItem>
+            </Link>
+
+            <Link to="/wordlist" style={{ color: "#fff" }}>
+              <ListItem>PRACTICE</ListItem>
+            </Link>
+
+            <Link to="/quiz" style={{ color: "#fff" }}>
+              <ListItem>QUIZ</ListItem>
+            </Link>
           </List>
           <HamburgerMenu onClick={(event) => handleDrawerToggle(event, true)}>
-            <MenuIcon />
+            <MenuIcon sx={{ fontSize: "2.8rem" }} />
           </HamburgerMenu>
         </Right>
       </Wrapper>

@@ -1,7 +1,7 @@
-import axios from 'axios'
+import axios from "axios"
 
-const BASE_URL = 'https://collocation-dictionary.herokuapp.com/api'
+const BASE_URL = "https://collocation-dictionary.vercel.app/api"
 
 export const publicRequest = axios.create({
-    baseURL: BASE_URL
+  baseURL: BASE_URL,
 })

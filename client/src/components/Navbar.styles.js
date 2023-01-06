@@ -18,7 +18,22 @@ export const Left = styled.div`
     margin: 2rem;
   }
 `
-export const Logo = styled.span``
+export const Logo = styled.span`
+  font-size: 20px;
+  padding: 20px;
+  @media only screen and ${responsive.device.s} {
+    font-size: 25px;
+  }
+  @media only screen and ${responsive.device.m} {
+    font-size: 28px;
+  }
+  @media only screen and ${responsive.device.l} {
+    font-size: 32px;
+  }
+  @media only screen and ${responsive.device.xl} {
+    font-size: 40px;
+  }
+`
 
 export const Right = styled.div`
   display: flex;
@@ -35,7 +50,7 @@ export const ListItem = styled.li`
     list-style: none;
     display: inline-block;
     padding: 2rem 1rem;
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     color: #fff;
     font-weight: 700;
     letter-spacing: 2px;
@@ -47,10 +62,11 @@ export const ListItem = styled.li`
     }
 
     @media only screen and ${responsive.device.l} {
-      font-size: 1.2rem;
+      font-size: 1.6rem;
     }
     @media only screen and ${responsive.device.xl} {
-      font-size: 1.4rem;
+      font-size: 2.2rem;
+      padding: 4rem 2rem;
     }
   }
 `

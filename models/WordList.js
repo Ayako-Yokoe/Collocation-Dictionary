@@ -1,12 +1,11 @@
-const mongoose = require('mongoose')
-
+const mongoose = require("mongoose")
 
 const WordlistSchema = new mongoose.Schema(
-    {
-        front: { type: String },
-        back: { type: Array }
-    },
-    { timestamps: true }
+  {
+    front: { type: String },
+    back: { type: Array },
+  },
+  { timestamps: true }
 )
 
-module.exports = mongoose.model('Wordlist', WordlistSchema)
+module.exports = mongoose.model("Wordlist", WordlistSchema)

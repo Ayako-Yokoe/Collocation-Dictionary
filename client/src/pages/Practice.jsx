@@ -3,6 +3,7 @@ import { FlashcardArray } from "react-quizlet-flashcard"
 import { publicRequest } from "../requestMethods"
 import Navbar from "../components/Navbar"
 import { Container, Wrapper } from "./Practice.styles"
+import { extractEventHandlers } from "@mui/base"
 
 const Practice = () => {
   const [wordlist, setWordlist] = useState([{}])
@@ -17,12 +18,21 @@ const Practice = () => {
           const obj = {
             id: res.data[i]._id,
             front: res.data[i].front,
-            back: res.data[i].back.join(),
+            back: res.data[i].back
+              .join("")
+              .replaceAll(" .", ".<br>")
+              .replaceAll(" ?", "?<br>")
+              .replaceAll(" !", "!<br>")
+              .replaceAll(" ,", ",")
+              .replaceAll(" '", "'")
+              .replaceAll(" ;", ";"),
           }
           sub_array.push(obj)
         }
         setWordlist(sub_array)
-      } catch {}
+      } catch (err) {
+        console.log(err)
+      }
     }
     getWordlist()
   }, [])
