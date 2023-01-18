@@ -3,7 +3,6 @@ import { FlashcardArray } from "react-quizlet-flashcard"
 import { publicRequest } from "../requestMethods"
 import Navbar from "../components/Navbar"
 import { Container, Wrapper } from "./Practice.styles"
-import { extractEventHandlers } from "@mui/base"
 
 const Practice = () => {
   const [wordlist, setWordlist] = useState([{}])
