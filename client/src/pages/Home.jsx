@@ -4,15 +4,7 @@ import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
 import Modal from "@mui/material/Modal"
 import Navbar from "../components/Navbar"
-import {
-  Container,
-  Wrapper,
-  Title,
-  StartButton,
-  PracticeButton,
-  QuizButton,
-  BottomButton,
-} from "./Home.styles"
+import { Container, Wrapper, Title, MenuButton } from "./Home.styles"
 
 //modal
 const style = {
@@ -41,15 +33,15 @@ const Home = () => {
       <Wrapper>
         <Title>Collocation Dictionary</Title>
         <Link to="/search">
-          <StartButton>SEARCH</StartButton>
+          <MenuButton>SEARCH</MenuButton>
         </Link>
         <Link to="/wordlist">
-          <PracticeButton>PRACTICE</PracticeButton>
+          <MenuButton>PRACTICE</MenuButton>
         </Link>
         <Link to="/quiz">
-          <QuizButton>QUIZ</QuizButton>
+          <MenuButton>QUIZ</MenuButton>
         </Link>
-        <BottomButton onClick={handleModalOpen}>HOW TO USE</BottomButton>
+        <MenuButton onClick={handleModalOpen}>HOW TO USE</MenuButton>
       </Wrapper>
       <Modal
         open={modalOpen}
