@@ -5,12 +5,14 @@ const mongoose = require("mongoose")
 const dotenv = require("dotenv").config()
 const wordlistRouter = require("./routes/wordlist")
 const path = require("path")
+const nocache = require("nocache")
 
 mongoose
   .connect(process.env.MONGO_URL)
   .then(() => console.log("Connected to DB"))
   .catch((err) => console.log(err))
 
+app.use(nocache())
 app.use(cors())
 app.use(express.json())
 app.use("/api/wordlist", wordlistRouter)
